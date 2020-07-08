@@ -3,6 +3,12 @@ import java.util.*;
 public class DiceStats {
 
 	public static void main(String[] args) {
+		int[] count = method1();
+		method2(count);
+	}
+	
+	public static int[] method1() {
+
 		Scanner input = new Scanner(System.in);
 		
 		System.out.println("Would you like to roll one dice at a time or multiple dice at once?");
@@ -27,7 +33,7 @@ public class DiceStats {
 				System.out.println("Number of times you rolled " + (number + modifier) + ": " + count[number-1]);
 			}
 			
-
+			return count; 
 		}
 		
 		else {
@@ -37,9 +43,31 @@ public class DiceStats {
 		for (int number=1; number<=count.length; number++) {
 			System.out.println("Number of times you rolled " + (number + modifier) + ": " + count[number-1]);
 			}
+		
+		return count;
+		
+		}	
+	}
+	
+	public static void method2(int[] count) {
+		
+		Scanner input = new Scanner(System.in);
+		
+		System.out.println("Would you like to add another set of dice rolls to this result?");
+		String question = input.nextLine();
+		
+		if(question.equals("Yes")) {
+			int[] count2 = method1();
+			int[] count3 = mixedDice(count, count2);
+			
+			for (int number=1; number<=count3.length; number++) {
+				System.out.println("Number of times you rolled " + number + ": " + count3[number-1]);
+			}
 		}
 		
-		
+		else {
+			;
+		}
 	}
 	
 	public static int[] oneDiceOutput(int diceSides, int rolls) {
