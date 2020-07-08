@@ -11,7 +11,7 @@ public class DiceStats {
 
 		Scanner input = new Scanner(System.in);
 		
-		System.out.println("Would you like to roll one dice at a time or multiple dice at once?");
+		System.out.println("Would you like to roll multiple dice at once?");
 		String question = input.nextLine();
 		
 		System.out.println("Please type in number of rolls");
@@ -102,14 +102,24 @@ public class DiceStats {
 	}
 	
 	public static int[] mixedDice(int[] array1, int[] array2) {
+		if(array1.length >= array2.length) {
 		
-		int[] count = new int[array1.length];
+			int[] count = new int[array1.length];
 		
-		for (int i=0; i < array1.length; i++) {
-			count[i] += array1[i];
-			count[i] += array2[i];
-		}
-		
+			for (int i=0; i < array1.length; i++) {
+				count[i] += array1[i];
+				count[i] += array2[i];
+			}
 		return count;
+		}
+		else {
+			int[] count = new int[array2.length];
+			
+			for (int i=0; i < array2.length; i++) {
+				count[i] += array2[i];
+				count[i] += array1[i];
+			}
+		return count;
+		}
 	}
 }
